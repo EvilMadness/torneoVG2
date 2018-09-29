@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dataSource name="torneoVG@localhost">
+<dataSource name="Django default">
   <database-model serializer="dbm" rdbms="POSTGRES" format-version="4.11">
     <root id="1">
       <ServerVersion>9.5.14</ServerVersion>
@@ -53,7 +53,7 @@
       <ObjectId>2200</ObjectId>
       <Comment>standard public schema</Comment>
       <Owner>postgres</Owner>
-      <IntrospectionTimestamp>2018-09-05.11:34:33.126</IntrospectionTimestamp>
+      <IntrospectionTimestamp>2018-09-13.22:57:41.966</IntrospectionTimestamp>
       <IntrospectionStateNumber>665</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
@@ -82,39 +82,7 @@
       <ObjectId>3580</ObjectId>
       <Comment>block range index (BRIN) access method</Comment>
     </access-method>
-    <sequence id="17" parent="10" name="carrera_carrera_id_seq">
-      <ObjectId>16561</ObjectId>
-      <Owner>postgres</Owner>
-      <StateNumber>659</StateNumber>
-      <SequenceIdentity>1</SequenceIdentity>
-      <BelongsToColumn>1</BelongsToColumn>
-      <CacheSize>1</CacheSize>
-    </sequence>
-    <sequence id="18" parent="10" name="concursante_concursante_id_seq">
-      <ObjectId>16585</ObjectId>
-      <Owner>postgres</Owner>
-      <StateNumber>665</StateNumber>
-      <SequenceIdentity>1</SequenceIdentity>
-      <BelongsToColumn>1</BelongsToColumn>
-      <CacheSize>1</CacheSize>
-    </sequence>
-    <sequence id="19" parent="10" name="escuela_escuela_id_seq">
-      <ObjectId>16577</ObjectId>
-      <Owner>postgres</Owner>
-      <StateNumber>663</StateNumber>
-      <SequenceIdentity>1</SequenceIdentity>
-      <BelongsToColumn>1</BelongsToColumn>
-      <CacheSize>1</CacheSize>
-    </sequence>
-    <sequence id="20" parent="10" name="personaje_personaje_id_seq">
-      <ObjectId>16569</ObjectId>
-      <Owner>postgres</Owner>
-      <StateNumber>661</StateNumber>
-      <SequenceIdentity>1</SequenceIdentity>
-      <BelongsToColumn>1</BelongsToColumn>
-      <CacheSize>1</CacheSize>
-    </sequence>
-    <sequence id="21" parent="10" name="auth_group_id_seq">
+    <sequence id="17" parent="10" name="auth_group_id_seq">
       <ObjectId>16424</ObjectId>
       <Owner>postgres</Owner>
       <StateNumber>623</StateNumber>
@@ -122,7 +90,7 @@
       <BelongsToColumn>1</BelongsToColumn>
       <CacheSize>1</CacheSize>
     </sequence>
-    <sequence id="22" parent="10" name="auth_group_permissions_id_seq">
+    <sequence id="18" parent="10" name="auth_group_permissions_id_seq">
       <ObjectId>16434</ObjectId>
       <Owner>postgres</Owner>
       <StateNumber>623</StateNumber>
@@ -130,7 +98,7 @@
       <BelongsToColumn>1</BelongsToColumn>
       <CacheSize>1</CacheSize>
     </sequence>
-    <sequence id="23" parent="10" name="auth_permission_id_seq">
+    <sequence id="19" parent="10" name="auth_permission_id_seq">
       <ObjectId>16416</ObjectId>
       <Owner>postgres</Owner>
       <StateNumber>623</StateNumber>
@@ -138,7 +106,7 @@
       <BelongsToColumn>1</BelongsToColumn>
       <CacheSize>1</CacheSize>
     </sequence>
-    <sequence id="24" parent="10" name="auth_user_groups_id_seq">
+    <sequence id="20" parent="10" name="auth_user_groups_id_seq">
       <ObjectId>16452</ObjectId>
       <Owner>postgres</Owner>
       <StateNumber>623</StateNumber>
@@ -146,7 +114,7 @@
       <BelongsToColumn>1</BelongsToColumn>
       <CacheSize>1</CacheSize>
     </sequence>
-    <sequence id="25" parent="10" name="auth_user_id_seq">
+    <sequence id="21" parent="10" name="auth_user_id_seq">
       <ObjectId>16442</ObjectId>
       <Owner>postgres</Owner>
       <StateNumber>623</StateNumber>
@@ -154,7 +122,7 @@
       <BelongsToColumn>1</BelongsToColumn>
       <CacheSize>1</CacheSize>
     </sequence>
-    <sequence id="26" parent="10" name="auth_user_user_permissions_id_seq">
+    <sequence id="22" parent="10" name="auth_user_user_permissions_id_seq">
       <ObjectId>16460</ObjectId>
       <Owner>postgres</Owner>
       <StateNumber>623</StateNumber>
@@ -162,7 +130,23 @@
       <BelongsToColumn>1</BelongsToColumn>
       <CacheSize>1</CacheSize>
     </sequence>
-    <sequence id="27" parent="10" name="django_admin_log_id_seq">
+    <sequence id="23" parent="10" name="carrera_carrera_id_seq">
+      <ObjectId>16561</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>659</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+      <CacheSize>1</CacheSize>
+    </sequence>
+    <sequence id="24" parent="10" name="concursante_concursante_id_seq">
+      <ObjectId>16585</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>665</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+      <CacheSize>1</CacheSize>
+    </sequence>
+    <sequence id="25" parent="10" name="django_admin_log_id_seq">
       <ObjectId>16520</ObjectId>
       <Owner>postgres</Owner>
       <StateNumber>625</StateNumber>
@@ -170,7 +154,7 @@
       <BelongsToColumn>1</BelongsToColumn>
       <CacheSize>1</CacheSize>
     </sequence>
-    <sequence id="28" parent="10" name="django_content_type_id_seq">
+    <sequence id="26" parent="10" name="django_content_type_id_seq">
       <ObjectId>16406</ObjectId>
       <Owner>postgres</Owner>
       <StateNumber>621</StateNumber>
@@ -178,10 +162,26 @@
       <BelongsToColumn>1</BelongsToColumn>
       <CacheSize>1</CacheSize>
     </sequence>
-    <sequence id="29" parent="10" name="django_migrations_id_seq">
+    <sequence id="27" parent="10" name="django_migrations_id_seq">
       <ObjectId>16395</ObjectId>
       <Owner>postgres</Owner>
       <StateNumber>620</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+      <CacheSize>1</CacheSize>
+    </sequence>
+    <sequence id="28" parent="10" name="escuela_escuela_id_seq">
+      <ObjectId>16577</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>663</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+      <CacheSize>1</CacheSize>
+    </sequence>
+    <sequence id="29" parent="10" name="personaje_personaje_id_seq">
+      <ObjectId>16569</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>661</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
       <BelongsToColumn>1</BelongsToColumn>
       <CacheSize>1</CacheSize>

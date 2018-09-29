@@ -1,0 +1,46 @@
+<table class="table">
+    <thead>
+    <tr>
+        <th class="text-center">Nickname</th>
+        <th class="text-center">Personaje</th>
+        <th class="text-center">Correo</th>
+        <th class="text-center">Nombre</th>
+        <th class="text-center">Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td >CJ</td>
+        <td >Pikachu</td>
+        <td >allasaksaksal@laslklaska</td>
+        <td >laslkals aslasklaa</td>
+        <td  class="text-center">
+            <form id="delete_form_{{ as}}" action="" method="POST">
+                <a href='#'>
+                    <button type="button" class="btn btn-info btn-fab btn-round"  data-toggle="tooltip" data-placement="top" title="Detalles"><i class="material-icons">more_vert</i></button>
+                </a>
+                <a href='#'>
+                    <button type="button" rel="tooltip" class="btn btn-success btn-fab btn-round" data-toggle="tooltip" data-placement="top" title="Editar"><i class="material-icons">edit</i></button>
+                </a>
+                <input name="_method" type="hidden" value="DELETE">
+
+                <button type="submit" class="btn btn-danger btn-fab btn-round" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="material-icons">delete_forever</i></button>
+
+            </form>
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="5">
+            No se han obtenido resultados de la búsqueda
+        </td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+        <td class="text-center" colspan="3">
+
+        </td>
+    </tr>
+    </tfoot>
+</table>
