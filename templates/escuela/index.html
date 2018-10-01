@@ -1,0 +1,74 @@
+{% extends 'base/main.html' %}
+{% load staticfiles %}
+{% block title %}Smash {% endblock %}
+{% block type %}{% endblock %}
+{% block content %}
+    <!-- Titulo o encabezado -->
+    <div class="page-header header-small clear-filter" data-parallax="true" style="background-image: url('{% static '/assets/img/black.jpg' %}'); height: 20vh ">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <h2 class="title">Lista de instituciones educativas</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- divs necesarios para el contenido -->
+    <div class="main main-raised">
+        <div class="container">
+            <div class="section text-center">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th class="text-center">#</th>
+                        <th class="text-center">Nombre de la institución</th>
+                        <th class="text-center">Municipio</th>
+                        <th class="text-center">Acciones</th>
+                    </tr>
+                    </thead>
+                    <tbody class="text-center">
+                    {% if object_list %}
+                        {% for escuela in object_list %}
+                            <tr>
+                                <td>{{ escuela.id }}</td>
+                                <td >{{ escuela.nombre }}</td>
+                                <td >{{ escuela.municipio }}</td>
+                                <td  class="text-center">
+                                    <form id="delete_form_{{ escuela.id }}" action="" method="POST">
+                                        <a href="{% url 'escuela:edit_escuela' escuela.id %}">
+                                            <button type="button" rel="tooltip" class="btn btn-success btn-fab btn-round" data-toggle="tooltip" data-placement="top" title="Editar"><i class="material-icons">edit</i></button>
+                                        </a>
+                                        <input name="_method" type="hidden" value="DELETE">
+
+                                        <button type="submit" class="btn btn-danger btn-fab btn-round" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="material-icons">delete_forever</i></button>
+
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan="5">
+                                No se han obtenido resultados de la búsqueda
+                            </td>
+                        </tr>
+                    {% endif %}
+
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td class="text-center" colspan="4">
+
+                        </td>
+                    </tr>
+                    </tfoot>
+                </table>
+                <a href="{% url 'escuela:add_escuela' %}">
+                    <button type="button" class="btn btn-primary btn-round" data-toggle="tooltip" data-placement="top" title="Añadir una institución"><i class="material-icons">add</i>Añadir</button>
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

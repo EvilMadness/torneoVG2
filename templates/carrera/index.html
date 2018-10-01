@@ -20,21 +20,20 @@
                 <table class="table">
                     <thead>
                     <tr>
+                        <th class="text-center">#</th>
                         <th class="text-center">Nombre de la carrera</th>
                         <th class="text-center">Acciones</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="text-center">
                     {% if object_list %}
                         {% for carrera in object_list %}
                             <tr>
-                                <td >{{ carrera.nombre_carrera }}</td>
+                                <td>{{ carrera.id }}</td>
+                                <td>{{ carrera.nombre_carrera }}</td>
                                 <td  class="text-center">
                                     <form id="delete_form_{{ carrera.id }}" action="" method="POST">
-                                        <a href='#'>
-                                            <button type="button" class="btn btn-info btn-fab btn-round"  data-toggle="tooltip" data-placement="top" title="Detalles"><i class="material-icons">more_vert</i></button>
-                                        </a>
-                                        <a href='#'>
+                                        <a href="{% url 'carrera:edit_carrera' carrera.id %}">
                                             <button type="button" rel="tooltip" class="btn btn-success btn-fab btn-round" data-toggle="tooltip" data-placement="top" title="Editar"><i class="material-icons">edit</i></button>
                                         </a>
                                         <input name="_method" type="hidden" value="DELETE">
@@ -62,7 +61,7 @@
                     </tr>
                     </tfoot>
                 </table>
-                <a href='add_carrera'>
+                <a href="{% url 'carrera:add_carrera' %}">
                     <button type="button" class="btn btn-primary btn-round" data-toggle="tooltip" data-placement="top" title="Añadir una carrera"><i class="material-icons">add</i>Añadir</button>
                 </a>
 

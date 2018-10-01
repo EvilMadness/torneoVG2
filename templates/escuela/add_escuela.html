@@ -1,0 +1,44 @@
+{% extends 'base/main.html' %}
+{% load staticfiles %}
+{% block title %}Smash {% endblock %}
+{% block type %}{% endblock %}
+
+{% block content %}
+    <div class="page-header header-filter clear-filter" data-parallax="true" style=" background-image: url('{% static '/assets/img/black.jpg'%}'); height: 40vh">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="title">Registrar nueva institución educativa</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main main-raised">
+        <div class="container">
+            <div class="section text-center">
+                <div class="col-md-8 ml-auto mr-auto">
+                    <form id="form" class="form-horizontal" name="form" method="post">
+                        {% csrf_token %}
+                        <div class="row text-left">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="nickname">Nombre de la institución educativa</label>
+                                    {{ form.nombre }}
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="nickname">Municipio</label>
+                                    {{ form.municipio }}
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <input type="submit" class="btn btn-primary btn-round" value="Guardar">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

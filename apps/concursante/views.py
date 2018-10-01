@@ -1,14 +1,15 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, UpdateView
 
 from apps.concursante.forms import AddConcursante
 from apps.concursante.models import Concursante
 
 
 def index(request):
-    return render(request, 'concursante/index.html')
+    concursante = Concursante.objects.all()
+    return render(request, 'concursante/index.html', {'object_list': concursante})
 
 
 class ShowConcursantes(ListView):
@@ -17,6 +18,13 @@ class ShowConcursantes(ListView):
 
 
 class CreateConcursante(CreateView):
+    model = Concursante
+    form_class = AddConcursante
+    template_name = 'concursante/add_concursante.html'
+    success_url = reverse_lazy('concursante:index')
+
+
+class UpdateConcursante(UpdateView):
     model = Concursante
     form_class = AddConcursante
     template_name = 'concursante/add_concursante.html'

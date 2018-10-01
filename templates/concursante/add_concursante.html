@@ -4,7 +4,7 @@
 {% block type %}{% endblock %}
 
 {% block content %}
-    {% csrf_token %}
+
     <div class="page-header header-filter clear-filter" data-parallax="true" style=" background-image: url('{% static '/assets/img/black.jpg'%}'); height: 40vh">
         <div class="container">
             <div class="row">
@@ -18,7 +18,8 @@
         <div class="container">
             <div class="section text-center">
                 <div class="col-md-8 ml-auto mr-auto">
-                    <form id="form" class="form-horizontal" name="form">
+                    <form id="form" class="form-horizontal" name="form" method="post">
+                        {% csrf_token %}
                         <div class="row text-left">
                             <div class="col-sm-6">
                                 <div class="form-group">
