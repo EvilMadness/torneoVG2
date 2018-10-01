@@ -4,11 +4,11 @@
 {% block type %}{% endblock %}
 {% block content %}
     <!-- Titulo o encabezado -->
-    <div class="page-header header-small clear-filter" data-parallax="true" style="background-image: url('{% static '/assets/img/black.jpg' %}'); ">
+    <div class="page-header header-small clear-filter" data-parallax="true" style="background-image: url('{% static '/assets/img/black.jpg' %}'); height: 20vh ">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h1 class="title">{{ HOLA }}</h1>
+                    <h2 class="title">Lista de concursantes</h2>
                 </div>
             </div>
         </div>
@@ -19,7 +19,7 @@
             <div class="section text-center">
                 {% include 'concursante/table.html' %}
 
-                <a href='#'>
+                <a href='add_concursante'>
                     <button type="button" class="btn btn-primary btn-round" data-toggle="tooltip" data-placement="top" title="Añadir un concursante"><i class="material-icons">add</i>Añadir</button>
                 </a>
 

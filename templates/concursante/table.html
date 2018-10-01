@@ -9,32 +9,37 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <td >CJ</td>
-        <td >Pikachu</td>
-        <td >allasaksaksal@laslklaska</td>
-        <td >laslkals aslasklaa</td>
-        <td  class="text-center">
-            <form id="delete_form_{{ as}}" action="" method="POST">
-                <a href='#'>
-                    <button type="button" class="btn btn-info btn-fab btn-round"  data-toggle="tooltip" data-placement="top" title="Detalles"><i class="material-icons">more_vert</i></button>
-                </a>
-                <a href='#'>
-                    <button type="button" rel="tooltip" class="btn btn-success btn-fab btn-round" data-toggle="tooltip" data-placement="top" title="Editar"><i class="material-icons">edit</i></button>
-                </a>
-                <input name="_method" type="hidden" value="DELETE">
+    {% if object_list %}
+    {% for concursante in object_list %}
+        <tr>
+            <td >{{ concursante.nickname }}</td>
+            <td >{{ concursante.id_personaje }}</td>
+            <td >{{ concursante.email }}</td>
+            <td >{{ concursante.nombre }}</td>
+            <td  class="text-center">
+                <form id="delete_form_{{ concursante.id }}" action="" method="POST">
+                    <a href='#'>
+                        <button type="button" class="btn btn-info btn-fab btn-round"  data-toggle="tooltip" data-placement="top" title="Detalles"><i class="material-icons">more_vert</i></button>
+                    </a>
+                    <a href='#'>
+                        <button type="button" rel="tooltip" class="btn btn-success btn-fab btn-round" data-toggle="tooltip" data-placement="top" title="Editar"><i class="material-icons">edit</i></button>
+                    </a>
+                    <input name="_method" type="hidden" value="DELETE">
 
-                <button type="submit" class="btn btn-danger btn-fab btn-round" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="material-icons">delete_forever</i></button>
+                    <button type="submit" class="btn btn-danger btn-fab btn-round" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="material-icons">delete_forever</i></button>
 
-            </form>
-        </td>
-    </tr>
+                </form>
+            </td>
+        </tr>
+    {% endfor %}
+        {% else %}
+        <tr>
+            <td colspan="5">
+                No se han obtenido resultados de la búsqueda
+            </td>
+        </tr>
+    {% endif %}
 
-    <tr>
-        <td colspan="5">
-            No se han obtenido resultados de la búsqueda
-        </td>
-    </tr>
     </tbody>
     <tfoot>
     <tr>
