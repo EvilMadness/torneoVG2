@@ -1,0 +1,38 @@
+{% extends 'base/main.html' %}
+{% load staticfiles %}
+{% block title %}Smash {% endblock %}
+{% block type %}{% endblock %}
+
+{% block content %}
+    <div class="page-header header-filter clear-filter" data-parallax="true" style=" background-image: url('{% static '/assets/img/black.jpg'%}'); height: 40vh">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="title">Eliminar institución</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main main-raised">
+        <div class="container">
+            <div class="section text-center">
+                <div class="col-md-8 ml-auto mr-auto">
+                    <form id="form" class="form-horizontal" name="form" method="post">
+                        {% csrf_token %}
+                        <div class="row text-center">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <h3>¿Seguro que desea eliminar la institución {{ object.nombre }} ? </h3>
+                                    <button type="submit" rel="tooltip" class="btn btn-danger btn-primary btn-round" data-toggle="tooltip" data-placement="top" title="Eliminar">Si, estoy seguro</button>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="{% url 'escuela:index' %}">
+                            <button type="button" class="btn btn-primary btn-round" data-toggle="tooltip" data-placement="top" >Cancelar</button>
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

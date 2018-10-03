@@ -3,8 +3,9 @@
 {% block title %}Smash {% endblock %}
 {% block type %}{% endblock %}
 {% block content %}
+
     <!-- Titulo o encabezado -->
-    <div class="page-header header-small clear-filter" data-parallax="true" style="background-image: url('{% static '/assets/img/black.jpg' %}'); height: 20vh ">
+    <div class="page-header header-small clear-filter" data-parallax="true" style="background-image: url('{% static '/assets/img/black.jpg' %}'); height: 10vh ">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
@@ -32,14 +33,14 @@
                                 <td>{{ carrera.id }}</td>
                                 <td>{{ carrera.nombre_carrera }}</td>
                                 <td  class="text-center">
-                                    <form id="delete_form_{{ carrera.id }}" action="" method="POST">
+                                    <form action="" method="POST">
+                                        {% csrf_token %}
                                         <a href="{% url 'carrera:edit_carrera' carrera.id %}">
                                             <button type="button" rel="tooltip" class="btn btn-success btn-fab btn-round" data-toggle="tooltip" data-placement="top" title="Editar"><i class="material-icons">edit</i></button>
                                         </a>
-                                        <input name="_method" type="hidden" value="DELETE">
-
-                                        <button type="submit" class="btn btn-danger btn-fab btn-round" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="material-icons">delete_forever</i></button>
-
+                                        <a href="{% url 'carrera:delete_carrera' carrera.id %}">
+                                            <button type="button" rel="tooltip" class="btn btn-danger btn-fab btn-round" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="material-icons">delete_forever</i></button>
+                                        </a>
                                     </form>
                                 </td>
                             </tr>

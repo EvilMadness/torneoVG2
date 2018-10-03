@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, UpdateView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
 from apps.concursante.forms import AddConcursante
 from apps.concursante.models import Concursante
@@ -28,4 +28,10 @@ class UpdateConcursante(UpdateView):
     model = Concursante
     form_class = AddConcursante
     template_name = 'concursante/add_concursante.html'
+    success_url = reverse_lazy('concursante:index')
+
+
+class DeleteConcursante(DeleteView):
+    model = Concursante
+    template_name = 'concursante/delete_concursante.html'
     success_url = reverse_lazy('concursante:index')

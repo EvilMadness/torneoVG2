@@ -34,17 +34,14 @@
                                 <td >{{ personaje.nombre }}</td>
                                 <td >{{ personaje.imagen }}</td>
                                 <td class="text-center">
-                                    <form id="delete_form_{{ personaje.id }}" action="" method="POST">
-                                        <a href='#'>
-                                            <button type="button" class="btn btn-info btn-fab btn-round"  data-toggle="tooltip" data-placement="top" title="Detalles"><i class="material-icons">more_vert</i></button>
-                                        </a>
-                                        <a href='#'>
+                                    <form action="" method="POST">
+                                        {% csrf_token %}
+                                        <a href="{% url 'personaje:index' %}">
                                             <button type="button" rel="tooltip" class="btn btn-success btn-fab btn-round" data-toggle="tooltip" data-placement="top" title="Editar"><i class="material-icons">edit</i></button>
                                         </a>
-                                        <input name="_method" type="hidden" value="DELETE">
-
-                                        <button type="submit" class="btn btn-danger btn-fab btn-round" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="material-icons">delete_forever</i></button>
-
+                                        <a href="{% url 'personaje:delete_personaje' personaje.id %}">
+                                            <button type="button" rel="tooltip" class="btn btn-danger btn-fab btn-round" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="material-icons">delete_forever</i></button>
+                                        </a>
                                     </form>
                                 </td>
                             </tr>
@@ -66,7 +63,7 @@
                     </tr>
                     </tfoot>
                 </table>
-                <a href='add_personaje'>
+                <a href=" {% url 'personaje:add_personaje' %}">
                     <button type="button" class="btn btn-primary btn-round" data-toggle="tooltip" data-placement="top" title="Añadir una carrera"><i class="material-icons">add</i>Añadir</button>
                 </a>
 

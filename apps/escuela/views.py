@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 
 # Create your views here.
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, UpdateView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
 from apps.escuela.forms import AddEscuela
 from apps.escuela.models import Escuela
@@ -28,4 +28,10 @@ class UpdateEscuela(UpdateView):
     model = Escuela
     form_class = AddEscuela
     template_name = 'escuela/add_escuela.html'
+    success_url = reverse_lazy('escuela:index')
+
+
+class DeleteEscuela(DeleteView):
+    model = Escuela
+    template_name = 'escuela/delete_escuela.html'
     success_url = reverse_lazy('escuela:index')

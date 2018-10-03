@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, UpdateView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
 from apps.carrera.forms import AddCarrera
 from apps.carrera.models import Carrera
@@ -28,3 +28,11 @@ class UpdateCarrera(UpdateView):
     form_class = AddCarrera
     template_name = 'carrera/add_carrera.html'
     success_url = reverse_lazy('carrera:index')
+
+
+class DeleteCarrera(DeleteView):
+    model = Carrera
+    template_name = 'carrera/delete_carrera.html'
+    success_url = reverse_lazy('carrera:index')
+
+
