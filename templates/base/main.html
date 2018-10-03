@@ -36,7 +36,7 @@
             <ul class="nav navbar-nav ml-auto">
                 <!--@if (Auth::guest())-->
                 <li class="dropdown nav-item">
-                <a href="{% url 'home:login' %}" class=" nav-link"> <i class="material-icons">input</i> Iniciar sesión </a>
+                <a href="{% url 'usuario:login' %}" class=" nav-link"> <i class="material-icons">input</i> Iniciar sesión </a>
                 </li>
                 <li class="dropdown nav-item">
                 <a href="" class="nav-link"> <i class="material-icons">person_add</i> Registrarse </a>
@@ -86,10 +86,10 @@
                     </a>
                     <div class="dropdown-menu dropdown-with-icons">
                         <h6 class="dropdown-header">Administradores</h6>
-                        <a href="" class="dropdown-item">
+                        <a href="{% url 'usuario:index' %}" class="dropdown-item">
                             <i class="material-icons">list</i>Administradores
                         </a>
-                        <a href="" class="dropdown-item">
+                        <a href="{% url 'usuario:register' %}" class="dropdown-item">
                             <i class="material-icons">add</i> Añadir Administradores
                         </a>
                         <div class="dropdown-divider"></div>

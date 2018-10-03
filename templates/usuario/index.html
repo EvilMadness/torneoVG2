@@ -1,10 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base/main.html' %}
+{% load staticfiles %}
+{% block title %}Smash {% endblock %}
+{% block type %}{% endblock %}
+{% block content %}
+    <!-- Titulo o encabezado -->
+    <div class="page-header header-small clear-filter" data-parallax="true" style="background-image: url('{% static '/assets/img/black.jpg' %}'); height: 20vh ">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2 class="title">Lista de administradores</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- divs necesarios para el contenido -->
+    <div class="main main-raised">
+        <div class="container">
+            <div class="section text-center">
+                {% include 'usuario/table.html' %}
 
-</body>
-</html>
+                <a href="{% url 'usuario:register' %}">
+                    <button type="button" class="btn btn-primary btn-round" data-toggle="tooltip" data-placement="top" title="Añadir un administrador"><i class="material-icons">add</i>Añadir</button>
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
