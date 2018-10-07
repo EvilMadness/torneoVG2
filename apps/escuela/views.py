@@ -15,6 +15,7 @@ def index(request):
 class ShowEscuela(ListView):
     model = Escuela
     template_name = 'escuela/index.html'
+    paginate_by = 5
 
 
 class CreateEscuela(CreateView):
@@ -35,3 +36,4 @@ class DeleteEscuela(DeleteView):
     model = Escuela
     template_name = 'escuela/delete_escuela.html'
     success_url = reverse_lazy('escuela:index')
+

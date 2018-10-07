@@ -13,7 +13,7 @@
     {% for concursante in object_list %}
         <tr>
             <td >{{ concursante.nickname }}</td>
-            <td >{{ concursante.id_personaje }}</td>
+            <td >{{ concursante.id_personaje }} <img src="../../static/assets/img/personajes/{{ concursante.id_personaje }}.png" height="50"></td>
             <td >{{ concursante.email }}</td>
             <td >{{ concursante.nombre }}</td>
             <td  class="text-center">

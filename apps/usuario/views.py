@@ -2,7 +2,7 @@ from django.contrib.auth import login, logout
 from apps.usuario.models import User
 from django.contrib.auth.views import LoginView, LogoutView
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 import sweetify
@@ -17,7 +17,6 @@ def index(request):
 class Login(LoginView):
     form_class = LoginForm
     template_name = 'usuario/login.html'
-
     success_url = reverse_lazy('home:index')
 
     def form_valid(self, form):
@@ -51,7 +50,7 @@ class RegisterUser(CreateView):
     model = User
     form_class = AddUser
     template_name = 'usuario/add_usuario.html'
-    success_url = reverse_lazy('usuario:login')
+    success_url = reverse_lazy('usuario:index')
 
 
 class UpdateUser(UpdateView):
@@ -70,4 +69,4 @@ class DeleteUser(DeleteView):
 class Table(ListView):
     model = User
     template_name = 'usuario/table.html'
-    paginate_by = 5
+    paginate_by = 2

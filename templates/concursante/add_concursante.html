@@ -9,7 +9,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="title">Registrar nuevo concursante</h2>
+                    {% if object.id %}
+                        <h2 class="title">Editar concursante {{ object.nickname }}</h2>
+                    {% else %}
+                        <h2 class="title">Registrar nuevo concursante</h2>
+                    {% endif %}
                 </div>
             </div>
         </div>

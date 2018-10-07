@@ -63,6 +63,21 @@
                     </tr>
                     </tfoot>
                 </table>
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item">
+                            {% if page_obj.has_previous %}
+                            <a class="btn btn-dark btn-fab btn-round" href="?page={{ page_obj.previous_page_number }}"><i class="material-icons">arrow_back</i></a>
+                            {% endif %}
+                        </li>
+                        <li class="page-item">
+                            {% if page_obj.has_next %}
+                                <a class="btn btn-dark btn-fab btn-round" href="?page={{ page_obj.next_page_number}}"><i class="material-icons">arrow_forward</i></a>
+                            {% endif %}
+                        </li>
+                    </ul>
+                </nav>
+                <br>
                 <a href="{% url 'escuela:add_escuela' %}">
                     <button type="button" class="btn btn-primary btn-round" data-toggle="tooltip" data-placement="top" title="Añadir una institución"><i class="material-icons">add</i>Añadir</button>
                 </a>

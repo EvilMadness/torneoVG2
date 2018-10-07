@@ -40,14 +40,19 @@ class AddUser(UserCreationForm):
             'username',
             'first_name',
             'last_name',
-
             'email',
+            'second_last_name',
+            'is_staff',
+
         ]
 
         widgets = {
+
             'username': forms.TextInput(attrs={'class': 'form-control'}),
             'first_name': forms.TextInput(attrs={'class': 'form-control'}),
             'last_name': forms.TextInput(attrs={'class': 'form-control'}),
-
             'email': forms.EmailInput(attrs={'class': 'form-control'}),
+            'second_last_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'is_staff': forms.CheckboxInput(attrs={'class': 'form-control'}),
+
         }

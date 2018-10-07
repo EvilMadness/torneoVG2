@@ -16,3 +16,8 @@ class AddPersonaje(forms.ModelForm):
             'nombre': forms.TextInput(attrs={'class': 'form-control'}),
             'imagen': forms.FileInput(attrs={'class': 'form-control'}),
         }
+
+
+class UploadForm(forms.Form):
+    filename = forms.CharField(max_length=100)
+    docfile = forms.FileField(label='Selecciona un archivo')

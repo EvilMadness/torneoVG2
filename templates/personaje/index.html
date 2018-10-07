@@ -4,7 +4,7 @@
 {% block type %}{% endblock %}
 {% block content %}
     <!-- Titulo o encabezado -->
-    <div class="page-header header-small clear-filter" data-parallax="true" style="background-image: url('{% static '/assets/img/black.jpg' %}'); height: 20vh ">
+    <div class="page-header header-small clear-filter" data-parallax="true" style="background-image: url('{% static '/assets/img/black.jpg' %}'); height: 10vh ">
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
@@ -32,11 +32,15 @@
                             <tr>
                                 <td>{{ personaje.id }}</td>
                                 <td >{{ personaje.nombre }}</td>
-                                <td >{{ personaje.imagen }}</td>
+                                <td >{% if personaje.imagen %}
+                                    <img src="../../static/assets/img/{{ personaje.imagen }}" height="50">
+                                {% else %}
+                                    <img src="../../static/assets/img/personajes/No.png" height="50">
+                                {% endif %}</td>
                                 <td class="text-center">
                                     <form action="" method="POST">
                                         {% csrf_token %}
-                                        <a href="{% url 'personaje:index' %}">
+                                        <a href="{% url 'personaje:edit_personaje' personaje.id %}">
                                             <button type="button" rel="tooltip" class="btn btn-success btn-fab btn-round" data-toggle="tooltip" data-placement="top" title="Editar"><i class="material-icons">edit</i></button>
                                         </a>
                                         <a href="{% url 'personaje:delete_personaje' personaje.id %}">
