@@ -5,7 +5,8 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
-import sweetify
+from sweetify.views import SweetifySuccessMixin
+from sweetify import *
 
 from apps.usuario.forms import LoginForm, AddUser
 
@@ -21,6 +22,7 @@ class Login(LoginView):
 
     def form_valid(self, form):
         login(self.request, form.get_user())
+        info(self.request, 'Bienvenido(a) '+str(self.request.user.first_name).capitalize()+'!', toast=True, position='top', timer=2500)
         return HttpResponseRedirect(self.success_url)
 
 

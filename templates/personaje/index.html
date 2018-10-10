@@ -31,9 +31,9 @@
                         {% for personaje in object_list %}
                             <tr>
                                 <td>{{ personaje.id }}</td>
-                                <td >{{ personaje.nombre }}</td>
+                                <td >{{ personaje.nombre }} </td>
                                 <td >{% if personaje.imagen %}
-                                    <img src="../../static/assets/img/{{ personaje.imagen }}" height="50">
+                                    <img src="../../static/assets/img/personajes/{{ personaje.imagen }}" height="50">
                                 {% else %}
                                     <img src="../../static/assets/img/personajes/No.png" height="50">
                                 {% endif %}</td>
@@ -67,10 +67,25 @@
                     </tr>
                     </tfoot>
                 </table>
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item">
+                            {% if page_obj.has_previous %}
+                                <a class="btn btn-dark btn-default btn-round" href="?page=1">Inicio</a>
+                                <a class="btn btn-dark btn-fab btn-round" href="?page={{ page_obj.previous_page_number }}"><i class="material-icons">arrow_back</i></a>
+                            {% endif %}
+                        </li>
+                        <li class="page-item">
+                            {% if page_obj.has_next %}
+                                <a class="btn btn-dark btn-fab btn-round" href="?page={{ page_obj.next_page_number}}"><i class="material-icons">arrow_forward</i></a>
+                                <a class="btn btn-dark btn-default btn-round" href="?page=10">Ultima</a>
+                            {% endif %}
+                        </li>
+                    </ul>
+                </nav>
                 <a href=" {% url 'personaje:add_personaje' %}">
                     <button type="button" class="btn btn-primary btn-round" data-toggle="tooltip" data-placement="top" title="Añadir una carrera"><i class="material-icons">add</i>Añadir</button>
                 </a>
-
             </div>
         </div>
     </div>

@@ -146,6 +146,6 @@ TEMPLATE_DIRS = (
     os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static', 'templates'),
 )
 
-MEDIA_ROOT = (os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static', 'assets', 'img'))
+MEDIA_ROOT = (os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static', 'assets', 'img', 'personajes'))
 
 MEDIA_URL = '/media/'

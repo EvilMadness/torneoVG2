@@ -15,6 +15,7 @@ def index(request):
 class ShowPersonaje(ListView):
     model = Personaje
     template_name = 'personaje/index.html'
+    paginate_by = 5
 
 
 #class CreatePersonaje(CreateView):

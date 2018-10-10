@@ -6,6 +6,7 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
 from apps.carrera.forms import AddCarrera
 from apps.carrera.models import Carrera
+from sweetify.views import SweetifySuccessMixin
 
 
 def index(request):
@@ -16,23 +17,29 @@ class ShowCarrera(ListView):
     template_name = 'carrera/index.html'
 
 
-class CreateCarrera(CreateView):
+class CreateCarrera(SweetifySuccessMixin, CreateView):
     model = Carrera
     form_class = AddCarrera
     template_name = 'carrera/add_carrera.html'
+    sweetify_options = {'toast': True, 'position': 'top-left', 'timer': 3000}
+    success_message = 'Carrera guardada correctamente'
     success_url = reverse_lazy('carrera:index')
 
 
-class UpdateCarrera(UpdateView):
+class UpdateCarrera(SweetifySuccessMixin, UpdateView):
     model = Carrera
     form_class = AddCarrera
     template_name = 'carrera/add_carrera.html'
+    sweetify_options = {'toast': True, 'position': 'top-left', 'timer': 3000}
+    success_message = 'Carrera actualizada correctamente'
     success_url = reverse_lazy('carrera:index')
 
 
-class DeleteCarrera(DeleteView):
+class DeleteCarrera(SweetifySuccessMixin, DeleteView):
     model = Carrera
     template_name = 'carrera/delete_carrera.html'
+    sweetify_options = {'toast': True, 'position': 'top-left', 'timer': 3000}
+    success_message = 'Carrera eliminada correctamente'
     success_url = reverse_lazy('carrera:index')
 
 

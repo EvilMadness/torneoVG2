@@ -54,5 +54,4 @@ class AddUser(UserCreationForm):
             'email': forms.EmailInput(attrs={'class': 'form-control'}),
             'second_last_name': forms.TextInput(attrs={'class': 'form-control'}),
             'is_staff': forms.CheckboxInput(attrs={'class': 'form-control'}),
-
         }
