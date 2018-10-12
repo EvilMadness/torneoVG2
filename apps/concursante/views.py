@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
-from apps.concursante.forms import AddConcursante
+from apps.concursante.forms import AddConcursante, EditConcursante
 from apps.concursante.models import Concursante
 
 
@@ -26,8 +26,8 @@ class CreateConcursante(CreateView):
 
 class UpdateConcursante(UpdateView):
     model = Concursante
-    form_class = AddConcursante
-    template_name = 'concursante/add_concursante.html'
+    form_class = EditConcursante
+    template_name = 'concursante/edit_concursante.html'
     success_url = reverse_lazy('concursante:index')
 
 

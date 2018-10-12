@@ -48,6 +48,7 @@ class ShowUser(ListView):
     template_name = 'usuario/table.html'
 
 
+
 class RegisterUser(CreateView):
     model = User
     form_class = AddUser
@@ -60,6 +61,7 @@ class UpdateUser(UpdateView):
     form_class = AddUser
     template_name = 'usuario/add_usuario.html'
     success_url = reverse_lazy('usuario:index')
+    context_object_name = 'usuario'
 
 
 class DeleteUser(DeleteView):
