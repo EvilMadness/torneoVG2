@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
 
 # Create your views here.
@@ -16,6 +17,7 @@ class ShowEscuela(ListView):
     model = Escuela
     template_name = 'escuela/index.html'
     paginate_by = 5
+    ordering = ['id']
 
 
 class CreateEscuela(CreateView):
@@ -36,4 +38,13 @@ class DeleteEscuela(DeleteView):
     model = Escuela
     template_name = 'escuela/delete_escuela.html'
     success_url = reverse_lazy('escuela:index')
+
+
+def get_queryset(self,npagina=1):
+    consulta = Escuela.objects.all()
+    paginacion = Paginator(consulta,'cantidad objetos')
+    if len(paginacion.page(1)) == 0:
+        return None
+    else:
+        return paginacion.page(npagina)
 

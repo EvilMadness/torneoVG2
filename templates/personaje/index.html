@@ -20,9 +20,9 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        <th class="text-center">#</th>
+
                         <th class="text-center">Personaje</th>
-                        <th class="text-center">Img</th>
+                        <th></th>
                         <th class="text-center">Acciones</th>
                     </tr>
                     </thead>
@@ -30,9 +30,9 @@
                     {% if object_list %}
                         {% for personaje in object_list %}
                             <tr>
-                                <td>{{ personaje.id }}</td>
+
                                 <td >{{ personaje.nombre }} </td>
-                                <td >{% if personaje.imagen %}
+                                <td>{% if personaje.imagen %}
                                     <img src="../../static/assets/img/personajes/{{ personaje.imagen }}" height="50">
                                 {% else %}
                                     <img src="../../static/assets/img/personajes/No.png" height="50">
@@ -78,7 +78,7 @@
                         <li class="page-item">
                             {% if page_obj.has_next %}
                                 <a class="btn btn-dark btn-fab btn-round" href="?page={{ page_obj.next_page_number}}"><i class="material-icons">arrow_forward</i></a>
-                                <a class="btn btn-dark btn-default btn-round" href="?page=10">Ultima</a>
+                                <a class="btn btn-dark btn-default btn-round" href="?page={{ page_obj.paginator.num_pages }}">Ultima</a>
                             {% endif %}
                         </li>
                     </ul>

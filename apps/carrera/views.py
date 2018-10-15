@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.shortcuts import render
 
 # Create your views here.
@@ -15,6 +16,8 @@ def index(request):
 class ShowCarrera(ListView):
     model = Carrera
     template_name = 'carrera/index.html'
+    paginate_by = 4
+    ordering = ['id']
 
 
 class CreateCarrera(SweetifySuccessMixin, CreateView):
@@ -41,5 +44,14 @@ class DeleteCarrera(SweetifySuccessMixin, DeleteView):
     sweetify_options = {'toast': True, 'position': 'top-left', 'timer': 3000}
     success_message = 'Carrera eliminada correctamente'
     success_url = reverse_lazy('carrera:index')
+
+
+def get_queryset(self,npagina=1):
+    consulta = Carrera.objects.all()
+    paginacion = Paginator(consulta,'cantidad objetos')
+    if len(paginacion.page(1)) == 0:
+        return None
+    else:
+        return paginacion.page(npagina)
 
 

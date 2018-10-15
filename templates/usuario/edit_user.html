@@ -2,14 +2,12 @@
 {% load staticfiles %}
 {% block title %}Smash {% endblock %}
 {% block type %}{% endblock %}
-
 {% block content %}
-
     <div class="page-header header-filter clear-filter" data-parallax="true" style=" background-image: url('{% static '/assets/img/black.jpg'%}'); height: 40vh">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="title">Editar concursante {{ object.nickname }}</h2>
+                        <h2 class="title">Editar usuario {{ object.username }}</h2>
                 </div>
             </div>
         </div>
@@ -21,28 +19,28 @@
                     <form id="form" class="form-horizontal" name="form" method="post">
                         {% csrf_token %}
                         <div class="row text-left">
-                            <div class="col-sm-6">
+                            <div class="col-sm-12">
                                 <div class="form-group">
-                                    <label for="nickname">Nickname</label>
-                                    {{ form.nickname }}
+                                    <label for="nickname">Nombre de usuario</label>
+                                    {{ form.username }}
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="nombre">Nombre(s)</label>
-                                    {{ form.nombre }}
+                                    {{ form.first_name }}
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="apaterno">Apellido Paterno</label>
-                                    {{ form.apaterno }}
+                                    {{ form.last_name }}
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="amaterno">Apellido Materno</label>
-                                    {{ form.amaterno }}
+                                    <label for="apaterno">Apellido Materno</label>
+                                    {{ form.second_last_name }}
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -51,29 +49,37 @@
                                     {{ form.email }}
                                 </div>
                             </div>
+                            <br><br><br>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="id_carrera">Carrera</label>
-                                    {{ form.id_carrera }}
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            {{ form.is_staff }}
+                                            Administrador
+                                            <span class="form-check-sign">
+                                                <span class="check"></span>
+                                            </span>
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="id_escuela">Escuela</label>
-                                    {{ form.id_escuela }}
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="id_personaje">Personaje</label>
-                                    {{ form.id_personaje }}
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            {{ form.is_superuser }}
+                                            Super Administrador
+                                            <span class="form-check-sign">
+                                                <span class="check"></span>
+                                            </span>
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <br>
                         <div>
                             <input type="submit" class="btn btn-primary btn-round" value="Guardar">
-                            <input href="{% url 'concursante:index' %}" type="submit" class="btn btn-primary btn-round" value="Cancelar">
                         </div>
                     </form>
                 </div>

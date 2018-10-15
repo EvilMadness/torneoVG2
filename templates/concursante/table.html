@@ -13,7 +13,7 @@
     {% for concursante in object_list %}
         <tr>
             <td >{{ concursante.nickname }}</td>
-            <td >{{ concursante.id_personaje }} <img src="../../static/assets/img/personajes/{{ concursante.id_personaje_id }}.jpg" height="50"></td>
+            <td >{{ concursante.id_personaje }} <img src="../../static/assets/img/personajes/{{ concursante.id_personaje_id }}.jpg" height=""></td>
             <td >{{ concursante.email }}</td>
             <td >{{ concursante.nombre }}</td>
             <td  class="text-center">
@@ -46,3 +46,17 @@
     </tr>
     </tfoot>
 </table>
+<ul class="pagination justify-content-center">
+    <li class="page-item">
+        {% if page_obj.has_previous %}
+            <a class="btn btn-dark btn-default btn-round" href="?page=1">Inicio</a>
+            <a class="btn btn-dark btn-fab btn-round" href="?page={{ page_obj.previous_page_number }}"><i class="material-icons">arrow_back</i></a>
+        {% endif %}
+    </li>
+    <li class="page-item">
+        {% if page_obj.has_next %}
+            <a class="btn btn-dark btn-fab btn-round" href="?page={{ page_obj.next_page_number}}"><i class="material-icons">arrow_forward</i></a>
+            <a class="btn btn-dark btn-default btn-round" href="?page={{ page_obj.paginator.num_pages }}">Ultima</a>
+        {% endif %}
+    </li>
+</ul>

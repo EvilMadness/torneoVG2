@@ -32,7 +32,6 @@ class UpdatePersonaje(UpdateView):
     success_url = reverse_lazy('personaje:index')
 
 
-
 class DeletePersonaje(DeleteView):
     model = Personaje
     template_name = 'personaje/delete_personaje.html'

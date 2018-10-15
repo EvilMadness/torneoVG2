@@ -38,9 +38,9 @@
                                         <a href="{% url 'carrera:edit_carrera' carrera.id %}">
                                             <button type="button" rel="tooltip" class="btn btn-success btn-fab btn-round" data-toggle="tooltip" data-placement="top" title="Editar"><i class="material-icons">edit</i></button>
                                         </a>
-                                        <a href="{% url 'carrera:delete_carrera' carrera.id %}">
-                                            <button type="button" rel="tooltip" class="btn btn-danger btn-fab btn-round" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="material-icons">delete_forever</i></button>
-                                        </a>
+                                        <button title="Eliminar" onclick="deleteElement(event, '{{ carrera.nombre_carrera }}' ,'{% url 'carrera:delete_carrera' carrera.id %}')" type="button" rel="tooltip" class="btn btn-danger btn-fab btn-round">
+                                            <i class="material-icons">delete_forever</i>
+                                        </button>
                                     </form>
                                 </td>
                             </tr>
@@ -62,6 +62,23 @@
                     </tr>
                     </tfoot>
                 </table>
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item">
+                            {% if page_obj.has_previous %}
+                                <a class="btn btn-dark btn-default btn-round" href="?page=1">Inicio</a>
+                                <a class="btn btn-dark btn-fab btn-round" href="?page={{ page_obj.previous_page_number }}"><i class="material-icons">arrow_back</i></a>
+                            {% endif %}
+                        </li>
+                        <li class="page-item">
+                            {% if page_obj.has_next %}
+                                <a class="btn btn-dark btn-fab btn-round" href="?page={{ page_obj.next_page_number}}"><i class="material-icons">arrow_forward</i></a>
+                                <a class="btn btn-dark btn-default btn-round" href="?page={{ page_obj.paginator.num_pages }}">Ultima</a>
+                            {% endif %}
+                        </li>
+                    </ul>
+                </nav>
+
                 <a href="{% url 'carrera:add_carrera' %}">
                     <button type="button" class="btn btn-primary btn-round" data-toggle="tooltip" data-placement="top" title="Añadir una carrera"><i class="material-icons">add</i>Añadir</button>
                 </a>

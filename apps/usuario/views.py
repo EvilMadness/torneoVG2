@@ -8,7 +8,7 @@ from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from sweetify.views import SweetifySuccessMixin
 from sweetify import *
 
-from apps.usuario.forms import LoginForm, AddUser
+from apps.usuario.forms import LoginForm, AddUser, EditUser
 
 
 def index(request):
@@ -22,7 +22,7 @@ class Login(LoginView):
 
     def form_valid(self, form):
         login(self.request, form.get_user())
-        info(self.request, 'Bienvenido(a) '+str(self.request.user.first_name).capitalize()+'!', toast=True, position='top', timer=2500)
+        info(self.request, 'Bienvenido(a) '+str(self.request.user.username)+'!', toast=True, position='top', timer=2500)
         return HttpResponseRedirect(self.success_url)
 
 
@@ -58,8 +58,8 @@ class RegisterUser(CreateView):
 
 class UpdateUser(UpdateView):
     model = User
-    form_class = AddUser
-    template_name = 'usuario/add_usuario.html'
+    form_class = EditUser
+    template_name = 'usuario/edit_user.html'
     success_url = reverse_lazy('usuario:index')
     context_object_name = 'usuario'
 

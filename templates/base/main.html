@@ -36,77 +36,87 @@
 
             <ul class="nav navbar-nav ml-auto">
                 {% if user.is_authenticated %}
-                    <li class="dropdown nav-item">
-                        <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                            <i class="material-icons">book</i> Carrera
-                        </a>
-                        <div class="dropdown-menu dropdown-with-icons"> </a>
-                            <a href="{% url 'carrera:index' %}" class="dropdown-item">
-                                <i class="material-icons">list</i> Ver carreras
+                    {% if user.is_staff or user.is_superuser %}
+                        <li class="dropdown nav-item">
+                            <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                                <i class="material-icons">book</i> Carrera
                             </a>
-                            <a href="{% url 'carrera:add_carrera' %}" class="dropdown-item">
-                                <i class="material-icons">add</i> Agregar carrera
-                            </a>
-                        </div>
-                    </li>
-                    <li class="dropdown nav-item">
-                        <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                            <i class="material-icons">school</i> Institución
-                        </a>
-                        <div class="dropdown-menu dropdown-with-icons">
-                            <a href="{% url 'escuela:index' %}" class="dropdown-item">
-                                <i class="material-icons">list</i> Ver instituciones
-                            </a>
-                            <a href="{% url 'escuela:add_escuela' %}" class="dropdown-item">
-                                <i class="material-icons">add</i> Agregar institución
-                            </a>
-                        </div>
-                    <li class="dropdown nav-item">
-                        <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                            <i class="material-icons">games</i> Personajes
-                        </a>
-                        <div class="dropdown-menu dropdown-with-icons">
-                            <a href="{% url 'personaje:index' %}" class="dropdown-item">
-                                <i class="material-icons">list</i> Ver personajes
-                            </a>
-                            <a href="{% url 'personaje:index' %}" class="dropdown-item">
-                                <i class="material-icons">add</i> Añadir personajes
-                            </a>
-                        </div>
-                    </li>
-                    <li class="dropdown nav-item">
-                        <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                            <i class="material-icons">supervisor_account</i> Administración
-                        </a>
-                        <div class="dropdown-menu dropdown-with-icons">
-                            <h6 class="dropdown-header">Administradores</h6>
-                            <a href="{% url 'usuario:index' %}" class="dropdown-item">
-                                <i class="material-icons">list</i>Administradores
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a href="/concursante" class="dropdown-item">
-                                <i class="material-icons">people</i> Concursantes
-                            </a>
-                        </div>
-                    </li>
-                    <li class="dropdown nav-item">
-                        <a href="#" class="profile-photo dropdown-toggle nav-link" data-toggle="dropdown">
-                            <div class="profile-photo-small">
-                                <img src="{% static 'assets/img/faces/camp.jpg'%}" alt="Circle Image" class="rounded-circle img-fluid">
+                            <div class="dropdown-menu dropdown-with-icons"> </a>
+                                <a href="{% url 'carrera:index' %}" class="dropdown-item">
+                                    <i class="material-icons">list</i> Ver carreras
+                                </a>
+                                <a href="{% url 'carrera:add_carrera' %}" class="dropdown-item">
+                                    <i class="material-icons">add</i> Agregar carrera
+                                </a>
                             </div>
-                        </a>
-                        <div class="dropdown-menu dropdown-with-icons">
-                            <a href="#" class="dropdown-item">
-                                <i class="material-icons">account_circle</i>{{ user.username }}
-                            </a>
-                            <a class="dropdown-item" href="{% url 'usuario:logout' %}">
-                                <i class="material-icons">exit_to_app</i>Cerrar sesión
-                            </a>
-                            <form id="logout-form" action="" method="POST" style="display: none;">
+                        </li>
 
-                            </form>
-                        </div>
-                    </li>
+                        <li class="dropdown nav-item">
+                            <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                                <i class="material-icons">school</i> Institución
+                            </a>
+                            <div class="dropdown-menu dropdown-with-icons">
+                                <a href="{% url 'escuela:index' %}" class="dropdown-item">
+                                    <i class="material-icons">list</i> Ver instituciones
+                                </a>
+                                <a href="{% url 'escuela:add_escuela' %}" class="dropdown-item">
+                                    <i class="material-icons">add</i> Agregar institución
+                                </a>
+                            </div>
+                        </li>
+                    {% endif %}
+                        <li class="dropdown nav-item">
+                            <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                                <i class="material-icons">games</i> Personajes
+                            </a>
+                            <div class="dropdown-menu dropdown-with-icons">
+                                <a href="{% url 'personaje:index' %}" class="dropdown-item">
+                                    <i class="material-icons">list</i> Ver personajes
+                                </a>
+                                {% if user.is_staff or user.is_superuser %}
+                                    <a href="{% url 'personaje:index' %}" class="dropdown-item">
+                                        <i class="material-icons">add</i> Añadir personajes
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </li>
+
+                        <li class="dropdown nav-item">
+                            <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                                <i class="material-icons">supervisor_account</i> Administración
+                            </a>
+                            <div class="dropdown-menu dropdown-with-icons">
+                                {% if user.is_staff or user.is_superuser %}
+                                    <h6 class="dropdown-header">Administradores</h6>
+                                    <a href="{% url 'usuario:index' %}" class="dropdown-item">
+                                        <i class="material-icons">list</i>Administradores
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                {% endif %}
+                                <a href="/concursante" class="dropdown-item">
+                                    <i class="material-icons">people</i> Concursantes
+                                </a>
+                            </div>
+                        </li>
+                        <li class="dropdown nav-item">
+                            <a href="#" class="profile-photo dropdown-toggle nav-link" data-toggle="dropdown">
+                                <div class="profile-photo-small">
+                                    <img src="{% static 'assets/img/faces/camp.jpg'%}" alt="Circle Image" class="rounded-circle img-fluid">
+                                </div>
+                            </a>
+                            <div class="dropdown-menu dropdown-with-icons">
+                                <a href="#" class="dropdown-item">
+                                    <i class="material-icons">account_circle</i>{{ user.username }}
+                                </a>
+                                <a class="dropdown-item" href="{% url 'usuario:logout' %}">
+                                    <i class="material-icons">exit_to_app</i>Cerrar sesión
+                                </a>
+                                <form id="logout-form" action="" method="POST" style="display: none;">
+
+                                </form>
+                            </div>
+                        </li>
+
                 {% else %}
                     <li class="dropdown nav-item">
                         <a href="{% url 'usuario:login' %}" class=" nav-link"> <i class="material-icons">input</i> Iniciar sesión </a>
@@ -177,6 +187,7 @@
 <!-- Control Center for Now Ui Kit: parallax effects, scripts for the example pages etc -->
 <script src="{% static 'assets/js/material-kit.js'%}?v=2.0.3" type="text/javascript"></script>
 <script src="https://unpkg.com/sweetalert2@7.22.2/dist/sweetalert2.all.js"></script>
+<script src="{% static 'assets/js/mensajes.js' %}" type="text/javascript"></script>
 {% load sweetify %} {% sweetify %}
 
 </body>

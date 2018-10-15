@@ -9,10 +9,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    {% if object.id %}
-                        <h2 class="title">Editar concursante {{ object.nickname }}</h2>
-                    {% else %}
+                    {% if user.is_staff or user.is_superuser %}
                         <h2 class="title">Registrar nuevo concursante</h2>
+                    {% else %}
+                        <h2 class="title">Registrarme </h2>
                     {% endif %}
                 </div>
             </div>
@@ -51,26 +51,24 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="email">Email / Correo electronico</label>
-                                    {{ form.email }}
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
                                     <label for="password">Contraseña</label>
                                     {{ form.password }}
                                 </div>
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-6" hidden>
                                 <div class="form-group">
                                     <label for="id_carrera">Carrera</label>
-                                    {{ form.id_carrera }}
+                                    <select name="id_carrera" id="id_carrera">
+                                        <option value="1" selected></option>
+                                    </select>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-6" hidden>
                                 <div class="form-group">
                                     <label for="id_escuela">Escuela</label>
-                                    {{ form.id_escuela }}
+                                    <select name="id_escuela" id="id_escuela">
+                                        <option value="1" selected></option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-sm-6">
