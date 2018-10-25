@@ -1,6 +1,7 @@
 from django.urls import path
 
-from apps.usuario.views import Login, RegisterUser, index, ShowUser, DeleteUser, UpdateUser, Logout
+from apps.usuario.views import Login, RegisterUser, index, ShowUser, DeleteUser, UpdateUser, Logout, Reset, ResetDone, \
+    ResetConfirm, ResetComplete
 
 app_name = 'usuario'
 
@@ -12,4 +13,9 @@ urlpatterns = [
     path('register/', RegisterUser.as_view(), name='register'),
     path('<int:pk>/edit_user', UpdateUser.as_view(), name='edit_user'),
     path('<int:pk>/delete_user', DeleteUser.as_view(), name='delete_user'),
+
+    path('reset/password/', Reset.as_view(), name='password_reset'),
+    path('reset/password/done/', ResetDone.as_view(), name='password_reset_done'),
+    path('reset/<uidb64>/<token>/', ResetConfirm.as_view(), name='password_reset_confirm'),
+    path('reset/complete/', ResetComplete.as_view(), name='password_reset_complete'),
 ]

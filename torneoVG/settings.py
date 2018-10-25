@@ -149,3 +149,12 @@ TEMPLATE_DIRS = (
 MEDIA_ROOT = (os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static', 'assets', 'img', 'personajes'))
 
 MEDIA_URL = '/media/'
+
+# Password reset
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'rayomonster@gmail.com'
+EMAIL_HOST_PASSWORD = 'marmolejo33'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

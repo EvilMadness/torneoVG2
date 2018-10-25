@@ -1,6 +1,7 @@
 from django.contrib.auth import login, logout
 from apps.usuario.models import User
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import LoginView, LogoutView, PasswordResetView, PasswordResetDoneView, \
+    PasswordResetConfirmView, PasswordResetCompleteView
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
@@ -8,7 +9,7 @@ from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from sweetify.views import SweetifySuccessMixin
 from sweetify import *
 
-from apps.usuario.forms import LoginForm, AddUser, EditUser
+from apps.usuario.forms import LoginForm, AddUser, EditUser, ResetForm, ResetConfirmForm
 
 
 def index(request):
@@ -74,3 +75,28 @@ class Table(ListView):
     model = User
     template_name = 'usuario/table.html'
     paginate_by = 2
+
+
+class Reset(SweetifySuccessMixin, PasswordResetView):
+    template_name = "restaurar_pass/password_reset_form.html"
+    email_template_name = "restaurar_pass/password_reset_email.html"
+    form_class = ResetForm
+    sweetify_options = {'toast': True, 'position': 'top', 'timer': 2500}
+    success_message = 'Correo enviado correctamente.!'
+    success_url = reverse_lazy('usuario:password_reset_done')
+
+
+class ResetDone(PasswordResetDoneView):
+    template_name = "restaurar_pass/password_reset_done.html"
+
+
+class ResetConfirm(SweetifySuccessMixin, PasswordResetConfirmView):
+    template_name = "restaurar_pass/password_reset_confirm.html"
+    form_class = ResetConfirmForm
+    sweetify_options = {'toast': True, 'position': 'top', 'timer': 2500}
+    success_message = 'Contraseña restablecida correctamente!'
+    success_url = reverse_lazy('usuario:password_reset_complete')
+
+
+class ResetComplete(PasswordResetCompleteView):
+    template_name = "restaurar_pass/password_reset_complete.html"
